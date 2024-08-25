@@ -16,4 +16,7 @@ export default defineConfig({
   // },
   base: '/GameTeris/',
   plugins: [react()],
+  server: {
+    host: '0.0.0.0',
+  },
 })

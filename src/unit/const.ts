@@ -88,14 +88,15 @@ const lastRecord = (() => { // 上一把的状态
 export const maxPoint = 999999;
 
 export const transform = (function () {
-  const trans = ['transform', 'webkitTransform', 'msTransform', 'mozTransform', 'oTransform'];
+  const trans = ['transform', 'webkitTransform', '-webkit-transform', 'msTransform', 'mozTransform', 'oTransform'];
   const body = document.body;
-  return trans.filter((e: string) => { 
-    if (typeof e === 'string' && Object.prototype.hasOwnProperty.call(body.style, e)) { 
+  const filterTrans = trans.filter((e: string) => {
+    if (typeof e === 'string') { 
       return body.style[e] !== undefined;
     }
     return false
-  })[0];
+  })
+  return filterTrans[0];
 }());
 
 export const eachLines = 20; // 每消除eachLines行, 增加速度
