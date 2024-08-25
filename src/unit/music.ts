@@ -3,14 +3,13 @@ import store from '../store';
 import urlMusic from '../resource/music/music.mp3'
 
 // 使用 Web Audio API
-const AudioContext = window.AudioContext
-// const AudioContext = (
-//   window.AudioContext ||
-//   window.webkitAudioContext ||
-//   window.mozAudioContext ||
-//   window.oAudioContext ||
-//   window.msAudioContext
-// );
+const AudioContext = (
+  window.AudioContext ||
+  (window as any).webkitAudioContext ||
+  (window as any).mozAudioContext ||
+  (window as any).oAudioContext ||
+  (window as any).msAudioContext
+);
 
 export const hasWebAudioAPI = {
   data: !!AudioContext && location.protocol.indexOf('http') !== -1,
